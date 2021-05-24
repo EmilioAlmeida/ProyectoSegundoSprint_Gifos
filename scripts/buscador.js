@@ -36,7 +36,7 @@ const displaySearchGif = (results) => {
 	$verMasbtn.classList.remove('hidden');
 
 	if (offsetSearch === 0) {
-		window.scrollTo({ top: 600, behavior: 'smooth' });
+		window.scrollTo({ top: 480, behavior: 'smooth' });
 	}
 
 	if (results.data.length < 12) {

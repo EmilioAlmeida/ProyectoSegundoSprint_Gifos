@@ -46,6 +46,7 @@
     
   .logo_link .logo_imagen {
     width: 3rem;
+    
   }
   
   @media screen and (min-width: 768px) {
@@ -172,6 +173,7 @@
         -ms-flex-align: center;
             align-items: center;
     z-index: 2;
+    
   }
   
   body.darkMode .navbarSearch_container {
@@ -1002,10 +1004,27 @@
   
   .gif_container {
     position: relative;
-    
-  
+    width: auto;
+      
   }
-  
+
+  @media screen and (max-width: 427px) {
+    .gif_container {
+      width: 156px;
+      height: 120px;
+    }
+   
+  }
+
+  @media screen and (max-width: 350px) {
+    .gif_container {
+      width: 125px;
+      height: 100px;
+    }
+   
+  }  
+
+
   .gif_container .gif {
     margin: 0.5rem;
     width: 25%;
@@ -1025,11 +1044,28 @@
       height: 8rem;
     }
   }
+
+  @media screen and (max-width: 427px) {
+    .gif_container .gif {
+      margin: 1rem;
+      width: 156px;
+      height: 120px;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .gif_container .gif {
+      margin: 1rem;
+      width: 125px;
+      height: 100px;
+    }
+  }
   
   @media screen and (min-width: 768px) {
     .gif_container .gif {
       width: 14rem;
       height: 11rem;
+      
     }
     .gif_container .gifActions {
       margin: 1rem;
@@ -1101,9 +1137,17 @@
   }
 
   @media screen and (max-width: 400px){
+    .trending_slider .gif_container{
+      width: 166px;
+      height: 130px;
+    }
+  }
+
+
+  @media screen and (max-width: 400px){
     .trending_slider .gif_container .gif{
-      width: 243px;
-      height: 187px;
+      width: 156px;
+      height: 120px;
     }
   }
   
@@ -1122,7 +1166,13 @@
     }
   }
 
-  
+ /* @media screen and (max-width: 430px) {
+    .trending_slider .gif_container .gif {
+      width: 156px;
+      height: 120px;
+      ;
+    }
+  }*/
 
 
   .maximizedGif {
