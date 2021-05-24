@@ -22,12 +22,13 @@ const getStreamAndRecord = async () => {
 	$crearGifText.innerHTML = `El acceso a tu camara será válido sólo <br> por el tiempo en el que estés creando el GIFO.`;
 	$buttonComenzar.style.visibility = 'hidden';
 	$step1.classList.add('step-active');
+	
 
 	await navigator.mediaDevices
 		.getUserMedia({
 			audio: false,
 			video: {
-				height: { max: 480 }
+				height: { max: 600 }
 			}
 		})
 		.then((mediaStreamObj) => {
@@ -57,6 +58,7 @@ const getStreamAndRecord = async () => {
 
 // ***  ESCUCHA EL CLICK DE COMENZAR A GRABAR  *** \\
 $buttonComenzar.addEventListener('click', getStreamAndRecord);
+
 
 // ***  GRABANDO  ***  \\
 const createGifo = () => {
