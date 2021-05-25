@@ -56,6 +56,8 @@ function stickyNav() {
 
 window.addEventListener('scroll', stickyNav);
 
+
+
 // ***   CAMBIOS DE CLASES CON HIDDEN ADD Y REMOVE, SEGUN SEA EL DISPLAY ELEGIDO  ***  \\
 const displayCreateGifSection = (event) => {
 	event.preventDefault();

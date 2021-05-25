@@ -19,7 +19,6 @@ const $navbarSearchInput = document.querySelector('#navbarSearch_input');
 const $navbarSearchBtn = document.querySelector('#navbarSearch_icon');
 
 
-
 //  *** CONST PARA EL BUSCADOR ***  \\
 const $searchContainer = document.querySelector('#search_container');
 const $searchResultContainer = document.querySelector('#searchResult');
@@ -37,9 +36,7 @@ const $searchBtn = document.querySelector('#search-icon');
 const $searchCloseBtn = document.querySelector('#search-close-icon');
 
 // ***  SUGERENCIAS  ***  \\
-const $searchSuggestionsContainer = document.querySelector(
-	'#searchSuggestions_container'
-);
+const $searchSuggestionsContainer = document.querySelector('#searchSuggestions_container');
 const $searchSuggestionList = document.querySelector('#search-sugestion-list');
 
 // *** TENDENCIAS ETIQUETAS  ***  \\  

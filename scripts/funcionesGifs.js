@@ -1,4 +1,4 @@
-//***   FUCNIONES DE LOS GIF   ***  \\
+//***   FUNCIONES DE LOS GIF   ***  \\
 
 // *** FAVORITOS  *** \\
 let arrFavoriteGifs = [];
@@ -72,6 +72,24 @@ const displayFavoriteGifs = () => {
 
 $favoritosMenu.addEventListener('click', displayFavoriteSection);
 
+//***  MIS GIFOS  ***//
+/*
+let arrmyGif = [];
+
+const addToMyGif = (gif, username, title) => {
+	let objMyGif = {
+		gif: gif,
+		username: username,
+		title: title,
+	};
+
+	arrMyGif.push(objMyGif);
+
+	localStorage.setItem('MyGifs', JSON.stringify(arrMyGif));
+	displayMisGifosSection();
+};
+*/
+
 const displayMisGifosSection = (event) => {
 	event.preventDefault();
 	$misGifosSection.classList.remove('hidden');
@@ -95,7 +113,7 @@ $misGifosMenu.addEventListener('click', displayMisGifosSection);
 const displayMiGifos = () => {
 	$misGifosContainer.innerHTML = '';
 
-	let arrMyGif = JSON.parse(localStorage.getItem('MyGifs'));
+	let	arrMyGif = JSON.parse(localStorage.getItem('MyGifs'));
 
 	console.log(arrMyGif);
 	if (arrMyGif != null) {
@@ -114,7 +132,7 @@ const displayMiGifos = () => {
 					const gifContainer = document.createElement('div');
 					gifContainer.classList.add('gif_container');
 					gifContainer.innerHTML = `
-					<img class="gif" src="${imagesGiphy}" alt="Gif Creado por el usuario">
+					<img class="gif" src="${imagesGiphy}" alt="Gif hecho con la camara">
 					<div class="gifActions">
 						<div class="gifActions_btn">
 							<div class="btn remove" onclick="removeMyGifos('${idGiphy}')"></div>
@@ -206,10 +224,7 @@ const removeGif = (gif) => {
 	for (let i = 0; i < arrFavoriteParsed.length; i++) {
 		if (arrFavoriteParsed[i].gif === gif) {
 			arrFavoriteParsed.splice(i, 1);
-			localStorage.setItem(
-				'FavoriteGifs',
-				JSON.stringify(arrFavoriteParsed)
-			);
+			localStorage.setItem('FavoriteGifs', JSON.stringify(arrFavoriteParsed));
 			displayFavoriteSection(event);
 			closeMaximized();
 		}

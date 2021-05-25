@@ -136,6 +136,9 @@ const uploeadCreatedGif = async () => {
 		});
 };
 
+
+
+
 $buttonSubirGif.addEventListener('click', uploeadCreatedGif);
 
 // ***   REPETIR GRABACION  *** \\
@@ -177,9 +180,8 @@ $repeatBtn.addEventListener('click', repeatRecordingGif);
 
 // ***  DESCARGAR GIF  ***  \\
 const downloadCreatedGif = async (myGifId) => {
-	let blob = await fetch(
-		`https://media.giphy.com/media/${myGifId}/giphy.gif`
-	).then((img) => img.blob());
+	let blob = await fetch(`https://media.giphy.com/media/${myGifId}/giphy.gif`)
+	.then((img) => img.blob());
 	invokeSaveAsDialog(blob, 'My-Gif.gif');
 };
 
