@@ -73,14 +73,21 @@ const displayTrendingGifs = (results) => {
 		const gifContainer = document.createElement('div');
 		gifContainer.classList.add('gif_container');
 		gifContainer.innerHTML = `
-		</div>
-		<img class="gif" onclick="maximizeGif('${trendingGifImage}','${trendingGifUserName}','${trendingGifTitle}')" src="${trendingGifImage}" alt="${trendingGifTitle}">
-		</div> 
+		<img class="gif" onclick="maximizeGif('${results.data[i].images.original.url}','${results.data[i].username}','${results.data[i].title}')" src="${results.data[i].images.original.url}" alt="${results.data[i].title}">
+		
 		<div class="gifActions">
-		<div class="gifActions_btn">
-				<div class="btn favorite" onclick="addToFav('${trendingGifImage}','${trendingGifUserName}','${trendingGifTitle}')"></div>
-				<div class="btn download" onclick="downloadGif('${trendingGifImage}','${trendingGifTitle}')"></div>
-				<div class="btn maximize" onclick="maximizeGif('${trendingGifImage}','${trendingGifUserName}','${trendingGifTitle}')"></div>	
+			<div class="gifActions_btn">
+				<div class="btn favorite" onclick="addToFav('${results.data[i].images.original.url}','${results.data[i].username}','${results.data[i].title}')"></div>
+				<div class="btn download" onclick="downloadGif('${results.data[i].images.original.url}','${results.data[i].title}')"></div>
+				<div class="btn maximize" onclick="maximizeGif('${results.data[i].images.original.url}','${results.data[i].username}','${results.data[i].title}')"></div>
+			</div>
+				<div class="gif_info">
+					<p class="gif_user">${results.data[i].username}</p>
+					<p class="gif_title">${results.data[i].title}</p>
+				</div>
+			</div>
+			
+				
 		`;
 		$trendingSlider.appendChild(gifContainer);
 	}

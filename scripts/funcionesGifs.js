@@ -220,16 +220,11 @@ const removeGif = (gif) => {
 };
 
 // ***   BORRADO DE MIS GIFOS  *** \\
-const removeMyGifos = (gif) => {
-	event.preventDefault();
-	let arrMyGifosParsed = JSON.parse(localStorage.getItem('MyGifs'));
-	console.log(arrMyGifosParsed);
-	for (let i = 0; i < arrMyGifosParsed.length; i++) {
-		if (arrMyGifosParsed[i] == gif) {
-			arrMyGifosParsed.splice(i, 1);
-			localStorage.setItem('MyGifs', JSON.stringify(arrMyGifosParsed));
-			displayMisGifosSection(event);
-			closeMaximized();
-		}
-	}
-};
+const removeMyGifos = (i) => {
+	arrMyGifos.splice(i, 1);
+	localStorage.setItem('MyGifs', JSON.stringify(arrMyGifos));
+	displayMisGifosSection(event)
+	closeMaximized();
+}; 
+
+

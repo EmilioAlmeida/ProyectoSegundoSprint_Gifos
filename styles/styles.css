@@ -1,11 +1,12 @@
 * {
     padding: 0;
     margin: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     list-style: none;
     scroll-behavior: smooth;
     text-decoration: none;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    
   }
 
   .hidden {
@@ -1036,7 +1037,8 @@
     display: none;
     
   }
-  
+
+    
   @media screen and (min-width: 400px) {
     .gif_container .gif {
       margin: 1rem;
@@ -1045,7 +1047,7 @@
     }
   }
 
-  @media screen and (max-width: 427px) {
+  @media screen and (max-width: 400px) {
     .gif_container .gif {
       margin: 1rem;
       width: 156px;
@@ -1061,7 +1063,7 @@
     }
   }
   
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 360px) {
     .gif_container .gif {
       width: 14rem;
       height: 11rem;
@@ -1079,6 +1081,8 @@
       -webkit-transition: 0.5s ease-in-out;
       transition: 0.5s ease-in-out;
     }
+
+   
     .gif_container .gifActions:hover {
       opacity: 50;
     }
