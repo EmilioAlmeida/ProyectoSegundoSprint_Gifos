@@ -6,8 +6,8 @@ $buttonSubirGif.style.display = 'none';
 $overlay.style.display = 'none';
 
 let recorder;
+let blob;
 let form = new FormData();
-let myGifos;
 let arrMyGifos = [];
 
 // ***  CRONOMETRO  ***  \\
@@ -28,7 +28,7 @@ const getStreamAndRecord = async () => {
 		.getUserMedia({
 			audio: false,
 			video: {
-				height: { max: 600 }
+				height: { max: 480 }
 			}
 		})
 		.then((mediaStreamObj) => {
@@ -78,7 +78,7 @@ const stopCreatingGif = () => {
 	$video.classList.add('hidden');
 	$recordedGifo.classList.remove('hidden');
 	recorder.stopRecording(() => {
-		let blob = recorder.getBlob();
+		blob = recorder.getBlob();
 		$recordedGifo.src = URL.createObjectURL(blob);
 
 		form.append('file', recorder.getBlob(), 'myGif.gif');
@@ -99,6 +99,7 @@ const stopCreatingGif = () => {
 };
 
 $buttonFinalizar.addEventListener('click', stopCreatingGif);
+
 
 // ***  GUARDAR EN MIS GIFOS  Y SUBIR EL CREADO A GIPHY  *** \\
 const uploeadCreatedGif = async () => {

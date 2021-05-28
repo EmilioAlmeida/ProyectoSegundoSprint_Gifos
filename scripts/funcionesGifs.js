@@ -73,22 +73,6 @@ const displayFavoriteGifs = () => {
 $favoritosMenu.addEventListener('click', displayFavoriteSection);
 
 //***  MIS GIFOS  ***//
-/*
-let arrmyGif = [];
-
-const addToMyGif = (gif, username, title) => {
-	let objMyGif = {
-		gif: gif,
-		username: username,
-		title: title,
-	};
-
-	arrMyGif.push(objMyGif);
-
-	localStorage.setItem('MyGifs', JSON.stringify(arrMyGif));
-	displayMisGifosSection();
-};
-*/
 
 const displayMisGifosSection = (event) => {
 	event.preventDefault();
@@ -113,36 +97,40 @@ $misGifosMenu.addEventListener('click', displayMisGifosSection);
 const displayMiGifos = () => {
 	$misGifosContainer.innerHTML = '';
 
-	let	arrMyGif = JSON.parse(localStorage.getItem('MyGifs'));
+		arrMyGifos = JSON.parse(localStorage.getItem('MyGifs'));
 
-	console.log(arrMyGif);
-	if (arrMyGif != null) {
-		for (let i = 0; i < arrMyGif.length; i++) {
+	console.log(arrMyGifos);
+	if (arrMyGifos == null) {
+		arrMyGifos = [];
+	} else {
+		for (let i = 0; i < arrMyGifos.length; i++) {
 			fetch(
-				`${getGifByIdEndpoint}?ids=${arrMyGif[i]}&api_key=${apiKey}`
+				`${getGifByIdEndpoint}?ids=${arrMyGifos[i]}&api_key=${apiKey}`
 			)
 				.then((response) => response.json())
 				.then((misGifosGiphy) => {
-					let giphyGif = misGifosGiphy.data[0];
+					/*let giphyGif = misGifosGiphy.data[0];
 					let imagesGiphy = giphyGif.images.original.url;
 					let idGiphy = giphyGif.id;
+					*/
 
 					console.log(misGifosGiphy);
-					console.log(typeof idGiphy);
+					//console.log(typeof idGiphy);
 					const gifContainer = document.createElement('div');
 					gifContainer.classList.add('gif_container');
 					gifContainer.innerHTML = `
-					<img class="gif" src="${imagesGiphy}" alt="Gif hecho con la camara">
+					<img class="gif" src="${misGifosGiphy.data[0].images.original.url}" alt="Gif Creado por el usuario">
+					
 					<div class="gifActions">
 						<div class="gifActions_btn">
-							<div class="btn remove" onclick="removeMyGifos('${idGiphy}')"></div>
-							<div class="btn download" onclick="downloadGif('${imagesGiphy}','Gif')"></div>
-							<div class="btn maximize" onclick="maximizeFavoriteGif('${imagesGiphy}','User','Gif')"></div>
+							<div class="btn remove" onclick="removeMyGifos('${misGifosGiphy.data[0].images.original.url}')"></div>
+							<div class="btn download" onclick="downloadGif('${misGifosGiphy.data[0].images.original.url}','Gif')"></div>
+							<div class="btn maximize" onclick="maximizeFavoriteGif('${misGifosGiphy.data[0].images.original.url}','User','Gif')"></div>
 						</div>
 						<div class="gif_info">
 							<p class="gif_user">Emilio Oscar Almeida</p>
 							<p class="gif_title">Web Developer</p>
-						</div>F
+						</div>
 					</div>
 					`;
 					$misGifosContainer.appendChild(gifContainer);
