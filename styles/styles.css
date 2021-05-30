@@ -1005,7 +1005,8 @@
   
   .gif_container {
     position: relative;
-    width: auto;
+  }
+    /*width: auto;
       
   }
 
@@ -1023,13 +1024,13 @@
       height: 100px;
     }
    
-  }  
+  }  */
 
 
   .gif_container .gif {
     margin: 0.5rem;
-    width: 25%;
-    height: 20%;
+    width: 8rem;
+    height: 6rem;
         
   }
   
@@ -1038,7 +1039,6 @@
     
   }
 
-    
   @media screen and (min-width: 400px) {
     .gif_container .gif {
       margin: 1rem;
@@ -1047,28 +1047,47 @@
     }
   }
 
-  @media screen and (max-width: 400px) {
-    .gif_container .gif {
-      margin: 1rem;
-      width: 156px;
-      height: 120px;
-    }
-  }
-
-  @media screen and (max-width: 350px) {
-    .gif_container .gif {
-      margin: 1rem;
-      width: 125px;
-      height: 100px;
-    }
-  }
-  
-  @media screen and (min-width: 360px) {
+  @media screen and (min-width: 768px) {
     .gif_container .gif {
       width: 14rem;
       height: 11rem;
-      
     }
+
+        /*  
+          @media screen and (min-width: 400px) {
+          .gif_container .gif {
+           margin: 1rem;
+            width: 10rem;
+            height: 8rem;
+            }
+          }
+
+          @media screen and (max-width: 400px) {
+              .gif_container .gif {
+              margin: 1rem;
+              width: 156px;
+              height: 120px;
+            }
+          }
+
+          @media screen and (max-width: 350px) {
+            .gif_container .gif {
+              margin: 1rem;
+              width: 125px;
+              height: 100px;
+            }
+          }
+  
+          @media screen and (min-width: 360px) {
+              .gif_container .gif {
+              width: 14rem;
+              height: 11rem;
+            }
+          }
+
+        */
+
+
     .gif_container .gifActions {
       margin: 1rem;
       display: block;
@@ -1140,44 +1159,27 @@
     }
   }
 
-  @media screen and (max-width: 400px){
-    .trending_slider .gif_container{
-      width: 166px;
-      height: 130px;
-    }
-  }
-
-
-  @media screen and (max-width: 400px){
-    .trending_slider .gif_container .gif{
-      width: 156px;
-      height: 120px;
-    }
-  }
-  
   @media screen and (min-width: 1024px) {
-    .trending_slider .gif_container .gifActions {
-      width: 357px;
-      height: 275px;
-     
-  }
-  
-  @media screen and (min-width: 1024px) {
-    .trending_slider .gif_container .gif {
-      width: 357px;
-      height: 275px;
-      
+    .gif_container .gif {
+      width: 12rem;
+      height: 10rem;
+    }
+    .gif_container .gifActions {
+      width: 12rem;
+      height: 10rem;
     }
   }
 
- /* @media screen and (max-width: 430px) {
-    .trending_slider .gif_container .gif {
-      width: 156px;
-      height: 120px;
-      ;
+  @media screen and (min-width: 1530px) {
+    .gif_container .gif {
+      width: 14rem;
+      height: 12rem;
     }
-  }*/
-
+    .gif_container .gifActions {
+      width: 14rem;
+      height: 12rem;
+    }
+  }
 
   .maximizedGif {
     width: 100%;
@@ -1192,7 +1194,7 @@
         -ms-flex-pack: center;
             justify-content: center;
     background: rgba(255, 255, 255, 0.9);
-    z-index: 280;
+    z-index: 2000;
   }
   
   body.darkMode .maximizedGif {
@@ -1328,4 +1330,34 @@
   .downloadOverlay:hover {
     background: url("../assets/icon-download-hover.svg") center no-repeat;
   }
-}
+
+  @media screen and (max-width: 400px){
+    .trending_slider .gif_container{
+      width: 166px;
+      height: 130px;
+    }
+  }
+
+
+  @media screen and (max-width: 400px){
+    .trending_slider .gif_container .gif{
+      width: 156px;
+      height: 120px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .trending_slider .gif_container .gifActions {
+      width: 357px;
+      height: 275px;
+     
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .trending_slider .gif_container .gif {
+      width: 357px;
+      height: 275px;
+      
+    }
+  }
