@@ -97,7 +97,7 @@ $misGifosMenu.addEventListener('click', displayMisGifosSection);
 const displayMiGifos = () => {
 	$misGifosContainer.innerHTML = '';
 
-		arrMyGifos = JSON.parse(localStorage.getItem('MyGifs'));
+	arrMyGifos = JSON.parse(localStorage.getItem('MyGifs'));
 
 	console.log(arrMyGifos);
 	if (arrMyGifos == null) {
@@ -109,13 +109,11 @@ const displayMiGifos = () => {
 			)
 				.then((response) => response.json())
 				.then((misGifosGiphy) => {
-					/*let giphyGif = misGifosGiphy.data[0];
-					let imagesGiphy = giphyGif.images.original.url;
-					let idGiphy = giphyGif.id;
-					*/
+
 
 					console.log(misGifosGiphy);
-					//console.log(typeof idGiphy);
+					console.log(typeof misGifosGiphy.data[0].id);
+
 					const gifContainer = document.createElement('div');
 					gifContainer.classList.add('gif_container');
 					gifContainer.innerHTML = `
@@ -123,7 +121,7 @@ const displayMiGifos = () => {
 					
 					<div class="gifActions">
 						<div class="gifActions_btn">
-							<div class="btn remove" onclick="removeMyGifos('${misGifosGiphy.data[0].images.original.url}')"></div>
+							<div class="btn remove" onclick="removeMyGifos('${misGifosGiphy.data[0].id}')"></div>
 							<div class="btn download" onclick="downloadGif('${misGifosGiphy.data[0].images.original.url}','Gif')"></div>
 							<div class="btn maximize" onclick="maximizeFavoriteGif('${misGifosGiphy.data[0].images.original.url}','User','Gif')"></div>
 						</div>
@@ -220,11 +218,26 @@ const removeGif = (gif) => {
 };
 
 // ***   BORRADO DE MIS GIFOS  *** \\
-const removeMyGifos = (i) => {
-	arrMyGifos.splice(i, 1);
+/*
+const removeMyGifos = (gif) => {
+	arrMyGifos.splice(gif, 1);
+	console.log(arrMyGifos);
 	localStorage.setItem('MyGifs', JSON.stringify(arrMyGifos));
 	displayMisGifosSection(event)
 	closeMaximized();
-}; 
+};
+*/
+const removeMyGifos = (gif) => {
+	let arrMyGifosParsed = JSON.parse(localStorage.getItem('MyGifs'));
+	console.log(arrMyGifosParsed);
+	for (let i = 0; i < arrMyGifosParsed.length; i++) {
+		if (arrMyGifosParsed[i] == gif) {
+			arrMyGifosParsed.splice(i, 1);
+			localStorage.setItem('MyGifs', JSON.stringify(arrMyGifosParsed));
+			displayMisGifosSection(event);
+			closeMaximized();
+		}
+	}
+};
 
 
