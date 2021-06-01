@@ -1,0 +1,10 @@
+
+Proyecto Segundo Sprint Desarrollo Web Full Stack. Acámica
+
+Gifos.
+
+Desarrollador: Emilio Oscar Almeida
+
+URL Repositorio: https://github.com/EmilioAlmeida/ProyectoSegundoSprint_Gifos
+ 
+URL sitio web: https://emilioalmeida.github.io/ProyectoSegundoSprint_Gifos
