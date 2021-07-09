@@ -135,6 +135,7 @@ const uploeadCreatedGif = async () => {
 		.catch((err) => {
 			console.error(err);
 		});
+		window.setTimeout("document.location.reload()",1500);
 };
 
 
@@ -208,3 +209,4 @@ function timerActive() {
 
 	$timer.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
+

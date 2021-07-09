@@ -9,12 +9,27 @@ const addToFav = (gif, username, title) => {
 		username: username,
 		title: title,
 	};
-
+	/*
+	let indice = -1;
+	for(i=0; i < arrFavoriteGifs.length; i++) {
+		if(arrFavoriteGifs[i.gif] === (objGif.gif)){
+			indice=i
+		}
+	}
+	
+	if(indice){
 	arrFavoriteGifs.push(objGif);
-
+	}
+*/
+    arrFavoriteGifs.push(objGif);
 	localStorage.setItem('FavoriteGifs', JSON.stringify(arrFavoriteGifs));
-	displayFavoriteGifs();
+
+		displayFavoriteGifs();
+
+		
 };
+
+
 
 const displayFavoriteSection = (event) => {
 	event.preventDefault();
@@ -52,16 +67,16 @@ const displayFavoriteGifs = () => {
 			gifContainer.classList.add('gif_container');
 			gifContainer.innerHTML = ` 
 			<img class="gif" onclick="maximizeFavoriteGif('${gifyFav}','${usernameFav}','${titleFav}')" src="${gifyFav}" alt="${titleFav}">
-		
+			
 			<div class="gifActions">
 				<div class="gifActions_btn">
-					<div class="btn remove" onclick="removeGif('${gifyFav}')"></div>
-					<div class="btn download" onclick="downloadGif('${gifyFav}','${titleFav}')"></div>
-					<div class="btn maximize" onclick="maximizeFavoriteGif('${gifyFav}','${usernameFav}','${titleFav}')"></div>
+				<div class="btn remove" onclick="removeGif('${gifyFav}')"></div>
+				<div class="btn download" onclick="downloadGif('${gifyFav}','${titleFav}')"></div>
+				<div class="btn maximize" onclick="maximizeFavoriteGif('${gifyFav}','${usernameFav}','${titleFav}')"></div>
 				</div>
 				<div class="gif_info">
-					<p class="gif_user">${usernameFav}</p>
-					<p class="gif_title">${titleFav}</p>
+				<p class="gif_user">${usernameFav} </p>
+				<p class="gif_title">${titleFav}</p>
 				</div>
 			</div>
 			`;
@@ -99,6 +114,7 @@ const displayMiGifos = () => {
 
 	arrMyGifos = JSON.parse(localStorage.getItem('MyGifs'));
 
+
 	console.log(arrMyGifos);
 	if (arrMyGifos == null) {
 		arrMyGifos = [];
@@ -109,21 +125,23 @@ const displayMiGifos = () => {
 			)
 				.then((response) => response.json())
 				.then((misGifosGiphy) => {
-
+					let giphyGif = misGifosGiphy.data[0];
+					let imagesGiphy = giphyGif.images.original.url;
+					let idGiphy = giphyGif.id;
 
 					console.log(misGifosGiphy);
-					console.log(typeof misGifosGiphy.data[0].id);
+					console.log(typeof idGiphy);
 
 					const gifContainer = document.createElement('div');
 					gifContainer.classList.add('gif_container');
 					gifContainer.innerHTML = `
-					<img class="gif" src="${misGifosGiphy.data[0].images.original.url}" alt="Gif Creado por el usuario">
+					<img class="gif" src="${imagesGiphy}" alt="Gif Creado por el usuario">
 					
 					<div class="gifActions">
 						<div class="gifActions_btn">
-							<div class="btn remove" onclick="removeMyGifos('${misGifosGiphy.data[0].id}')"></div>
-							<div class="btn download" onclick="downloadGif('${misGifosGiphy.data[0].images.original.url}','Gif')"></div>
-							<div class="btn maximize" onclick="maximizeFavoriteGif('${misGifosGiphy.data[0].images.original.url}','User','Gif')"></div>
+						<div class="btn remove" onclick="removeMyGifos('${idGiphy}')"></div>
+						<div class="btn download" onclick="downloadGif('${imagesGiphy}','Gif')"></div>
+						<div class="btn maximize" onclick="maximizeFavoriteGif('${imagesGiphy}','User','Gif')"></div>
 						</div>
 						<div class="gif_info">
 							<p class="gif_user">Emilio Oscar Almeida</p>
@@ -206,7 +224,7 @@ const closeMaximized = () => {
 
 const removeGif = (gif) => {
 	let arrFavoriteParsed = JSON.parse(localStorage.getItem('FavoriteGifs'));
-	console.log(arrFavoriteParsed);
+	//console.log(arrFavoriteParsed);
 	for (let i = 0; i < arrFavoriteParsed.length; i++) {
 		if (arrFavoriteParsed[i].gif === gif) {
 			arrFavoriteParsed.splice(i, 1);
@@ -217,19 +235,15 @@ const removeGif = (gif) => {
 	}
 };
 
+
+
+
 // ***   BORRADO DE MIS GIFOS  *** \\
-/*
+
 const removeMyGifos = (gif) => {
-	arrMyGifos.splice(gif, 1);
-	console.log(arrMyGifos);
-	localStorage.setItem('MyGifs', JSON.stringify(arrMyGifos));
-	displayMisGifosSection(event)
-	closeMaximized();
-};
-*/
-const removeMyGifos = (gif) => {
+	event.preventDefault();
 	let arrMyGifosParsed = JSON.parse(localStorage.getItem('MyGifs'));
-	console.log(arrMyGifosParsed);
+	//console.log(arrMyGifosParsed);
 	for (let i = 0; i < arrMyGifosParsed.length; i++) {
 		if (arrMyGifosParsed[i] == gif) {
 			arrMyGifosParsed.splice(i, 1);
@@ -240,4 +254,7 @@ const removeMyGifos = (gif) => {
 	}
 };
 
+btn_favorite.addEventListener("click",() =>{
+	classList.toggle(addToFav(), removeGif());
+});
 

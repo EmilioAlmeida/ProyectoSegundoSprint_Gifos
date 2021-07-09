@@ -29,7 +29,7 @@ const getTrendingTags = async () => {
 	await fetch(`${trendingTagsEndpoint}?api_key=${apiKey}`)
 		.then((response) => response.json())
 		.then((trendingTags) => {
-			console.log(trendingTags);
+			//console.log(trendingTags);
 			displayTrendingTags(trendingTags);
 		})
 		.catch((err) => console.log(err));
@@ -55,7 +55,7 @@ const getTrendingGif = async () => {
 	await fetch(`${trendingEndpoint}?api_key=${apiKey}&limit=12&rating=g`)
 		.then((response) => response.json())
 		.then((results) => {
-			console.log(results);
+			//console.log(results);
 			displayTrendingGifs(results);
 		})
 		.catch((err) => console.error(err));
@@ -77,7 +77,7 @@ const displayTrendingGifs = (results) => {
 		
 		<div class="gifActions">
 			<div class="gifActions_btn">
-				<div class="btn favorite" onclick="addToFav('${results.data[i].images.original.url}','${results.data[i].username}','${results.data[i].title}')"></div>
+				<div class="btn favorite" onclick="addToFav('${results.data[i].images.original.url}','${results.data[i].username}','${results.data[i].title}')"></div>				
 				<div class="btn download" onclick="downloadGif('${results.data[i].images.original.url}','${results.data[i].title}')"></div>
 				<div class="btn maximize" onclick="maximizeGif('${results.data[i].images.original.url}','${results.data[i].username}','${results.data[i].title}')"></div>
 			</div>
