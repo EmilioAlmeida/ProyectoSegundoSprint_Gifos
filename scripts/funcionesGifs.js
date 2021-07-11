@@ -2,6 +2,7 @@
 
 // *** FAVORITOS  *** \\
 let arrFavoriteGifs = [];
+let arrGifsfavoritos = [];
 
 const addToFav = (gif, username, title) => {
 	let objGif = {
@@ -9,24 +10,73 @@ const addToFav = (gif, username, title) => {
 		username: username,
 		title: title,
 	};
-	/*
-	let indice = -1;
-	for(i=0; i < arrFavoriteGifs.length; i++) {
-		if(arrFavoriteGifs[i.gif] === (objGif.gif)){
-			indice=i
-		}
-	}
-	
-	if(indice){
+
 	arrFavoriteGifs.push(objGif);
+
+	/*
+1)
+	arrFavoriteGifs.forEach(FavoriteGifs => {
+		if (!FavoriteGifs in objGif) {
+			objGif[FavoriteGifs] = true
+			arrGifsfavoritos.push(FavoriteGifs)
+		}
+	})
+*/
+
+	/*
+2)	
+	nuevo = objGif.gif
+
+	arrFavoriteGifs.forEach((nuevo) => {
+		if(!arrFavoriteGifs.includes(nuevo)){
+			arrFavoriteGifs.push(objGif);
+		}
+	})
+	*/
+
+	/*
+3)	
+	let indice = -1;
+	for (i = 0; i < arrFavoriteGifs.length; i++) {
+		if (arrFavoriteGifs[i].gif === (objGif.gif)) {
+			arrFavoriteGifs[i] = indice
+		}
+	};
+
+	if (!indice) {
+		arrFavoriteGifs.push(objGif)
+	} else {
+		arrFavoriteGifs.splice(i, 1)
 	}
 */
-    arrFavoriteGifs.push(objGif);
+
+	/*
+4)
+	const nuevoArrayFavoritos = Array.from(new Set(arrFavoriteGifs))
+	*/
+
+	/*
+5)
+	const newArray = [...new Set(arrFavoriteGifs)];
+	console.log(newArray);
+	*/
+	/*
+6)
+		const nuevoArrayF = arrFavoriteGifs.filter((objGif, index) => arrFavoriteGifs.indexOf(objGif) === index);
+		console.log(nuevoArrayF);
+	*/
+
+	/*
+7)	
+	const nuevoArreglo = arrFavoriteGifs.reduce((newTempArr, objGif) => (newTempArr.includes(objGif) ? newTempArr : [...newTempArr, objGif]),[]);
+
+	console.log(nuevoArreglo);
+*/
+
 	localStorage.setItem('FavoriteGifs', JSON.stringify(arrFavoriteGifs));
 
-		displayFavoriteGifs();
+	displayFavoriteGifs();
 
-		
 };
 
 
@@ -253,8 +303,8 @@ const removeMyGifos = (gif) => {
 		}
 	}
 };
-
-btn_favorite.addEventListener("click",() =>{
+/*
+btn_favorite.addEventListener("click", () => {
 	classList.toggle(addToFav(), removeGif());
 });
-
+*/
